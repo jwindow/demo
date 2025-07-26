@@ -24,12 +24,25 @@ public class PostController {
     }
     @GetMapping("posts")
     public ResponseEntity<List<Post>> findAll(){
+        String msg= System.getenv().get("message");
+        if (msg != null) {
+            System.out.println("Message from environment: " + msg);
+        } else {
+            System.out.println("No message found in environment variables.");
+        }
+
         return new ResponseEntity<>(postService.findAll(),HttpStatus.OK);
         
     }
     @GetMapping("/")
     public List<PostDTO> findAllDto(){
         List<Post> posts= postService.findAll();
+        String msg= System.getenv().get("message");
+        if (msg != null) {
+            System.out.println("Message from environment: " + msg);
+        } else {
+            System.out.println("No message found in environment variables.");
+        }
         return posts.stream().map(p -> modelMapper.map(p, PostDTO.class)).collect(Collectors.toList());
     }
 
