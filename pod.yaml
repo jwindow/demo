@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod
+  labels:
+    app: demo-pod
+spec:
+  containers:
+  - env:
+    - name: MESSAGE
+      value: Hi! I'm an environment variable
+    image: https://github.com/jwindow/demo.git
+    imagePullPolicy: Always
+    name: demo-override
+    resources: {}

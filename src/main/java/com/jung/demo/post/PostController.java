@@ -24,7 +24,7 @@ public class PostController {
     }
     @GetMapping("posts")
     public ResponseEntity<List<Post>> findAll(){
-        String msg= System.getenv().get("message");
+        String msg= System.getenv().get("MESSAGE");
         if (msg != null) {
             System.out.println("Message from environment: " + msg);
         } else {
@@ -37,7 +37,7 @@ public class PostController {
     @GetMapping("/")
     public List<PostDTO> findAllDto(){
         List<Post> posts= postService.findAll();
-        String msg= System.getenv().get("message");
+        String msg= System.getenv().get("MESSAGE");
         if (msg != null) {
             System.out.println("Message from environment: " + msg);
         } else {
